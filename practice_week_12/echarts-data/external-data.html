@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Data Echart Visualization Examples: Basic Example</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/echarts/4.7.0/echarts.js"></script>
+
+    <style>
+        #chart {
+            width: 50vw;
+            height: 50vh;
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <div id="chart"></div>
+
+    <script>
+
+        // At first we set generic options for chart before data is loaded
+        let options = {
+            title: {
+                text: 'Sales figures by product category during April 2020',
+                subtext: "The Chiffon shirts are the most popular item"
+            },
+
+            grid: {
+                containLabel: true
+            },
+
+            tooltip: {},
+
+
+            yAxis: {
+                data: [],
+                type: 'category',
+                axisLabel: {
+                    interval: 0
+                }
+            },
+            xAxis: {},
+
+            series: [{
+                data: null,
+                name: 'Sales',
+                type: 'bar'
+            }]
+        };
+
+        //To load a data from file, the page should run on server - the when run from e.g. file:///C:/dev/index.html it does not work.
+        //Either run a local server - even IntelliJ has one built in, or upload data files to Dijkstra
+        fetch("sales.json")
+            .then(response => response.json())
+            .then(json => {
+
+                let data = json.data;
+                let labels = [];
+                let values = [];
+
+                // Here we sort the data by labels. It could have been done on API level
+                data.sort(function(a,b) {
+                    return a.value - b.value;
+                });
+
+
+                data.forEach(item => {
+                    labels.push( item.name );
+                    values.push( item.value );
+                });
+
+                options.yAxis.data = labels;
+                options.series[0].data = values;
+
+
+                chart.setOption(options);
+
+            })
+            .catch(error => console.log(error));
+
+
+        let chart = echarts.init( document.getElementById("chart") );
+
+        chart.setOption(options);
+
+    </script>
+
+</body>
+
+</html>

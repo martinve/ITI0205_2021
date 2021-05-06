@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Practical Echarts Example</title>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/css/style.css">
+
+</head>
+
+<body>
+
+<div class="container pt-4">
+    <h1>Getting Started With Echarts</h1>
+
+    <div id="chart" class="p-2"></div>
+
+    <div class="row mt-4">
+        <div class="col">
+            <div id="c0" class="chart p-2" style="height:250px;"></div>
+        </div>
+        <div class="col">
+            <div id="c1" class="chart p-2"></div>
+        </div>
+    </div>
+
+
+</div>
+
+    <script src="https://cdn.jsdelivr.net/npm/echarts@5.1.1/dist/echarts.min.js"></script>
+
+    <script>
+        let chart = echarts.init(document.getElementById('chart'));
+        let c0 = echarts.init(document.getElementById('c0'));
+        let c1 = echarts.init(document.getElementById('c1'));
+
+        let option = {
+            title: {
+                text: "My Fist Visualization"
+            },
+            xAxis: {
+                type: 'category',
+                data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
+            },
+            yAxis: {
+                type: 'value'
+            },
+            series: [{
+                data: [120, 200, 150, 80, 70, 110, 130],
+                type: 'line'
+            }]
+        };
+
+
+
+
+
+        let option1 = JSON.parse(JSON.stringify(option));
+        option1.title.text = "This is a bar chart";
+        option1.series[0].type = "bar";
+        option1.xAxis = option.yAxis;
+        option1.yAxis = option.xAxis;
+
+
+        let option0 = JSON.parse(JSON.stringify(option));
+        option0.title.text = "I am a polar bar";
+        option0.title.subtext = "But I cannot twist myself :("
+        option0.series[0].type = "bar";
+
+
+        option0 = {
+            angleAxis: {
+                max: 2,
+                startAngle: 30,
+                splitLine: {
+                    show: false
+                }
+            },
+            radiusAxis: {
+                type: 'category',
+                data: ['v', 'w', 'x', 'y', 'z'],
+                z: 10
+            },
+            polar: {
+            },
+            series: [{
+                type: 'bar',
+                data: [4, 3, 2, 1, 0],
+                coordinateSystem: 'polar',
+                name: 'Without Round Cap',
+                itemStyle: {
+                    borderColor: 'red',
+                    opacity: 0.8,
+                    borderWidth: 1
+                }
+            }],
+            legend: {
+                show: true,
+                data: ['Without Round Cap', 'With Round Cap']
+            }
+        };
+
+
+
+        chart.setOption(option);
+
+
+        c0.setOption(option0);
+
+
+
+        c1.setOption(option1);
+
+
+
+    </script>
+
+</body>
+</html>

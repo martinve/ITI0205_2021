@@ -1,0 +1,28 @@
+{
+  "data": [
+    {
+      "name": "Shirts",
+      "value": 5
+    },
+    {
+      "name": "Cardigan",
+      "value": 20
+    },
+    {
+      "name": "Ciffron Shirt",
+      "value": 36
+    },
+    {
+      "name": "Pants",
+      "value": 10
+    },
+    {
+      "name": "Heels",
+      "value": 10
+    },
+    {
+      "name": "Socks",
+      "value": 20
+    }
+  ]
+}

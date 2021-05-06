@@ -1,0 +1,50 @@
+$highlight-color: olive;
+$hover-color: red;
+
+
+
+.no-shadow {
+    box-shadow: none;
+}
+
+
+.thick-border {
+    border: 5px dotted black;
+}
+
+h1 {
+    color: $highlight-color;
+}
+
+h2 {
+    color: lighten($highlight-color, 10%);
+}
+
+h3 {
+    color: complement($highlight-color);
+}
+
+
+
+
+
+@mixin transform($property) {
+    -webkit-transform: $property;
+    -ms-transform: $property;
+    transform: $property;
+}
+
+
+
+.btn-primary {
+    background: #C67366;
+    border-color: #C67366;
+
+
+    &:hover, &:focus {
+        background: $hover-color;
+        border-color: $hover-color;
+        .no-shadow{};
+    }
+}
+

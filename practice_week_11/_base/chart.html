@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<title>Data Visualization Examples</title>
+
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/echarts/4.7.0/echarts.js"></script>
+		
+
+		<script src="shine.js"></script>
+		<script src="roma.js"></script>
+		<script src="infographic.js"></script>
+
+		<style>
+			#chart {
+				width: 400px;
+				height: 400px;
+			}
+		</style>
+			
+	</head>
+
+	<body>
+
+		<div id="chart"></div>
+
+		<script type="text/javascript">
+			
+			let chart = echarts.init(document.getElementById("chart"), 'infographic');
+
+			let option = {
+				title: {
+					text: "My Chart Sample"
+				},
+	            yAxis: {
+	                data: ["shirt","cardign","chiffon shirt","pants","heels","socks"]
+	            },
+	            xAxis: {},
+	            series: [{
+	                name: 'Sales',
+	                type: 'bar',
+	                roseType: 'angle',
+	                data: [
+	                	{value: 5, label: "Five"}, 
+	                	{value: 20}, 
+	                	{value: 36}, 
+	                	{value: 10}, 
+	                	{value: 10}, 
+	                	{value: 20}
+	                ]
+	            }]
+
+			}
+			
+			chart.setOption(option);
+		</script>
+
+	</body>
+
+</hmtl>

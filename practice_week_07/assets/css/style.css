@@ -1,0 +1,30 @@
+.no-shadow {
+  box-shadow: none;
+}
+
+.thick-border {
+  border: 5px dotted black;
+}
+
+h1 {
+  color: olive;
+}
+
+h2 {
+  color: #b3b300;
+}
+
+h3 {
+  color: navy;
+}
+
+.btn-primary {
+  background: #C67366;
+  border-color: #C67366;
+}
+.btn-primary:hover, .btn-primary:focus {
+  background: red;
+  border-color: red;
+}
+
+/*# sourceMappingURL=style.css.map */
